@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Charity</title>
+    <style>/* styles.css */
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 30px;
+            border-bottom: 3px solid #ff4500;
+            box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        header h1 {
+            font-size: 36px;
+            margin: 0;
+        }
+        
+        /* Navigation Bar Styles */
+        nav {
+            background-color: #333;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: background-color 0.3s;
+        }
+        
+        nav.scrolled {
+            background-color: #222; /* Change background color on scroll */
+        }
+        .login{
+            display: inline;
+            float: right;
+        }
+        .signup{
+            display: inline;
+            float: right;
+        }
+        nav ul {
+            list-style: none;
+            text-align: left;
+            margin: 0;
+            padding: 8px;
+            border-top: 3px solid #ff4500;
+        }
+        
+        nav ul li {
+            display: inline;
+            margin-left: 30px;
+            margin-right: 50px;
+            position: relative;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 18px;
+            transition: color 0.3s;
+            padding: 10px 0;
+            display: inline-block;
+        }
+        
+        nav a:hover {
+            color: #ff4500;
+        }
+        
+        /* Add animation for navigation links */
+        nav a::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #ff4500;
+            visibility: hidden;
+            transform: scaleX(0);
+            transition: all 0.3s ease-in-out 0s;
+        }
+        
+        nav a:hover::before {
+            visibility: visible;
+            transform: scaleX(1);
+        }
+        
+        section {
+            padding: 60px;
+            background-color: #fff;
+            margin: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        section h2 {
+            font-size: 28px;
+            color: #333;
+            margin: 0 0 20px;
+        }
+        
+        button {
+            display: block;
+            background-color: #ff4500;
+            color: #fff;
+            border: none;
+            margin: 0 auto;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            border-radius: 5px;
+            font-weight: bold;
+            text-align: center;
+        }
+        button a {
+            text-decoration: none;
+            color: #fff;
+        }
+        
+        button:hover {
+            background-color: white;
+            color: #ff6347;
+            border: 1px solid #ff4500;
+        }
+        
+        form {
+            margin-top: 2px;
+        }
+        
+        label, input, textarea {
+            display: block;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+        
+        label {
+            color: #333;
+        }
+        
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        
+        textarea {
+            height: 150px;
+        }
+        
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            border-top: 3px solid #ff4500;
+        }
+
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: justify;
+}
+        .login-button{
+            float: right;
+            margin-top: 6px;
+            color: #ffffff;
+            font-size: 20px;
+        }
+         .carousel-container {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+        .carousel-wrapper {
+            white-space: nowrap;
+            transition: 1s;
+        }
+        
+        .carousel-item {
+            display: inline-block;
+            width: 50%;
+        }
+        
+        .carousel-item img {
+            max-width: 100%;
+            align-items: center;
+        }
+
+        /* Add animation for sliding */
+        .carousel-wrapper.animation {
+            animation: slide 20s linear infinite;
+        }
+
+        @keyframes slide {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+        </style>
+</head>
+<body>
+    <header>
+        <h1>Food Charity</h1>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="">Home</a></li>
+            <li><a href="#donate">Donate</a></li>
+            <li><a href="#about">About Us</a></li>
+            
+            <li><a href="#contact">Contact Us</a></li>
+            
+            <li class="login" id="loginButton">
+                <form action="/login">
+                    <button>Login</button>
+                </form>
+            </li>
+            <li class="login-button" id="userEmail">
+                <% if (typeof userEmail !== 'undefined' && userEmail !== '') { %>
+                    Welcome, <%= userEmail %>
+                <% } else { %>
+                    User email not available.
+                <% } %>
+            </li>
+            <li class="signup" id="loginSignupButtons">
+                <form action="/signup">
+                    <button>Signup</button>
+                </form>
+            </li>
+        </ul>
+    </nav>
+    <div class="carousel-container">
+        <div class="carousel-wrapper animation">
+            <div class="carousel-item">
+                <img src="https://assets-global.website-files.com/5f6cc9cd16d59d990c8fca33/6221853526da96bc6682236b_Quote%20-%20Mother%20Teresa%201.jpg" alt="Image 3">
+            </div>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <div class="carousel-item">
+                <img src="https://media.istockphoto.com/id/524903696/photo/poor-indian-children-asking-for-food-india.jpg?s=612x612&w=0&k=20&c=uAUDyZRdpReAW51hD29W7fOCTDzNrOdHkAdKXErbapU=" alt="Image 1">
+            </div>
+            <div class="carousel-item">
+                <img src="https://media.istockphoto.com/id/941788480/photo/portrait-of-girl-kid-having-mid-day-meal-in-indian-school.jpg?s=612x612&w=0&k=20&c=tdMRbWtA9rtYSE_6EpXpSl5E4d4xdvqK7egdYd_Q_MM=" alt="Image 2">
+            </div>
+            <div class="carousel-item">
+                <img src="https://media.istockphoto.com/id/985170852/photo/the-poor-old-mans-hands-hold-an-empty-bowl-the-concept-of-hunger-or-poverty-selective-focus.jpg?s=612x612&w=0&k=20&c=lTNnADUxC_QzNGw2JH2uZFH9sZQWlXyrAZz8wIQLM7g=" alt="Image 3">
+            </div>
+        </div>
+    </div>
+    <section id="donate">
+        <h2>Donate</h2>
+        <div class="container">
+        <p style="font-size: 26px;padding: 20px;">
+            Sure, here is a short and simple paragraph to motivate people to donate money to feed the poor:
+            
+            Every day, millions of people go hungry. You can help.
+            
+            Donating to feed the poor is one of the most impactful ways to make a difference in the world. Even a small donation can help to provide a meal for someone in need.
+            
+            When you donate to feed the poor, you are helping to ensure that everyone has access to the basic human right of food. You are also showing compassion for those who are less fortunate than yourself.
+            
+            Please consider donating money to feed the poor today. Even a small donation can make a big difference.
+            
+            Thank you for your generosity.</p>
+            <img src="https://img.freepik.com/premium-vector/voluntary-donations-poor-sick-people-providing-material-assistance-socially-vulnerable-people-flat-illustration_124715-661.jpg" alt="fee poor" style="width: 50%; height: 500px;" /> 
+            </div>
+            <form action="/donation">
+            <button class="donate-button" type="submit">
+                Donate Now
+              </button>
+              </form>
+    </section>
+    
+     <section id="about">
+        <h2>About Us</h2>
+        <div class="container">
+          <img src="https://www.akshayapatra.org/wp-content/uploads/2023/05/Group-6829-1.png" alt="fee poor" style="width: 50%; height: 500px;" />
+          <p style="font-size: 26px;">
+            I promise that every rupee you donate will be used to provide food to poor people. I will be transparent about how I use your donation, and I will make sure that every rupee is used to make a difference in the lives of those in need.
+                        
+            I will work with local food banks and other organizations to ensure that your donation is used to purchase food that is needed and that it is distributed to the people who need it most. I will also work to ensure that the food is distributed in a way that is dignified and respectful.
+                        
+            I know that you are putting your trust in me when you donate to my cause, and I promise that I will not let you down. I will do everything in my power to make sure that your donation is used to help those in need.
+                        
+            Thank you for your generosity and for your support in helping to fight hunger.</p>
+        </div>
+      </section>
+    
+    
+   <section id="contact">
+        <h2>Contact Us</h2>
+        <p>If you have any questions or would like to get in touch, please fill out the form below.</p>
+        <form action="/contact">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" required></textarea>
+            
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+    
+    
+    <footer>
+        &copy; 2023 Food Charity->5418
+    </footer>
+    <script>
+        const userEmail = '<%= userEmail %>'; // Get userEmail from EJS template
+        const loginSignupButtons = document.getElementById('loginSignupButtons');
+        const loginButton = document.getElementById('loginButton');
+    
+        if (userEmail && userEmail.trim() !== '') {
+            // If userEmail is valid, hide the login and signup buttons
+            loginSignupButtons.style.display = 'none';
+            loginButton.style.display = 'none';
+        }
+    
+      </script>
+</body>
+</html>

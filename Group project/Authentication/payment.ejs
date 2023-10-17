@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>body{
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        font-family: 'Jost', sans-serif;
+        background: linear-gradient(to bottom, #fffefe, #ffffff, #ffffff);
+    }
+    .main{
+        width: 430px;
+        height: 170px;
+        background: red;
+        overflow: hidden;
+        background: rgb(232, 232, 232);
+        border-radius: 10px;
+        box-shadow: 5px 20px 50px #000;
+    }
+    form{
+        align-items: center;
+        justify-content: center;
+        margin-left: 133px;
+    }
+    h2{
+        font-size: 1.54em;
+        color: #000000;
+        padding: 10px;
+    }</style>
+</head>
+<body>
+    <div class="main">
+        <h2>Payment Using Secured Razorpay</h2>
+    <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_Mn0onLcTMNawfm" async> </script> </form>
+   </div>
+</body>
+</html>

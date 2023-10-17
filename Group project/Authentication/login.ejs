@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login Page</title>
+  <link rel="stylesheet" href="static/style.css">
+  
+  <meta name="google-signin-client_id" content="922308499439-1dt6v1tgno9fcls4r87308b8okgllrb8.apps.googleusercontent.com">
+</head>
+<body>
+    <div class="main">  
+        <div class="login">
+            <form action="/loginsuc" method="POST">
+                <label for="chk" aria-hidden="true">Login</label>
+                <input class="input" type="email" name="email" placeholder="Email" required="">
+                <input class="input" type="password" name="pswd" placeholder="Password" required="">
+                <button>Login</button>
+                <div class="data">
+                    <button id="btn" type="button" class="btn btn danger" onclick="signOut();">Sign Out</button>
+                </div>
+                <hr>
+                
+                <div class="g-signin2" data-onsuccess="onSignIn"></div>
+                
+            </form>
+        </div>
+	</div>
+    <script>
+        function onSignIn(googleUser) {
+  var profile = googleUser.getBasicProfile();
+  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+  console.log('Name: ' + profile.getName());
+  console.log('Image URL: ' + profile.getImageUrl());
+  console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+}
+    </script>
+    <script>
+        function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+      console.log('User signed out.');
+    });
+  }
+    </script>
+    <script>
+        function init() {
+    gapi.load('auth2', function() {
+        gapi.auth2.init({
+            client_id: '922308499439-1dt6v1tgno9fcls4r87308b8okgllrb8.apps.googleusercontent.com', // Replace with your client ID
+        }).then(function() {
+        });
+    });
+}
+    </script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+	
+</body>
+</html>
